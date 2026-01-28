@@ -16,7 +16,7 @@ A **stateful, multi-agent AI assistant** built with **LangGraph** and **Streamli
   An explicit router node inspects LLM outputs and determines whether to continue the dialogue or invoke tools.
 
 * **Automated Email Summaries**
-  On session completion, a `send_email_summary` tool sends a professional, bulleted summary via SMTP (TLS/SSL).
+  On session completion, a `send_email_summary` tool sends a professional, bulleted summary via SMTP.
 
 * **Manual Session Termination**
   A **Stop & Email** button in the UI injects a hidden `SIGNAL_END`, forcing immediate summarization and email dispatch.
@@ -84,7 +84,6 @@ SENDER_EMAIL=your_email@gmail.com
 SENDER_PASSWORD=your_16_digit_app_password
 ```
 
-> ⚠️ **Security Note**: Never commit your `.env` file to version control. Add it to `.gitignore`.
 
 ### 4️⃣ Run the Application
 
