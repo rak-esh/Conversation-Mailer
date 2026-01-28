@@ -94,6 +94,7 @@ builder.add_edge(START, "assistant")
 builder.add_conditional_edges("assistant", should_continue, {"tools": "tools", END: END})
 builder.add_edge("tools", END)
 
+db_path = "/data/chat_history.db"
 db_conn = sqlite3.connect("chat_history.db", check_same_thread=False)
 memory = SqliteSaver(db_conn)
 graph = builder.compile(checkpointer=memory)
