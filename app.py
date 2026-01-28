@@ -48,28 +48,6 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
 tools = [send_email_summary]
 llm_with_tools = llm.bind_tools(tools)
 
-# def assistant(state: AgentState):
-#     sys_msg = SystemMessage(content=(
-#         f"You are a helpful AI assistant. You are talking to Employee {state['employee_id']}. "
-#         "Chat about any topic. If you receive a 'SIGNAL_END' message, "
-#         "summarize the conversation and call 'send_email_summary'."
-#     ))
-#     return {"messages": [llm_with_tools.invoke([sys_msg] + state["messages"])]}
-
-# def tool_node(state: AgentState):
-#     """Fix: Overrides LLM hallucinations with data from state."""
-#     last_msg = state["messages"][-1]
-#     results = []
-#     for tool_call in last_msg.tool_calls:
-#         # Override with actual values from state
-#         fixed_args = tool_call["args"]
-#         fixed_args["email"] = state["email"]
-#         fixed_args["employee_id"] = state["employee_id"]
-        
-#         res = send_email_summary.invoke(fixed_args)
-#         results.append({"role": "tool", "content": res, "tool_call_id": tool_call["id"]})
-#     return {"messages": results, "session_closed": True}
-
 # --- 3. Updated Graph Logic ---
 def assistant(state: AgentState):
     sys_msg = SystemMessage(content=(
